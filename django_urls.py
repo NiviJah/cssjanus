@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 #
 # Copyright 2008 Google Inc. All Rights Reserved.
 
@@ -11,6 +11,6 @@ urlpatterns = patterns('',
   (r'^i18n/', include('django.conf.urls.i18n')),
   (r'^$', 'django_cssjanus.index'),
   (r'^do/', 'django_cssjanus.do'),
-  (r'^\/?files/(?P<path>.*)$', 'django.views.static.serve', 
+  (r'^\/?files/(?P<path>.*)$', 'django.views.static.serve',
     {'document_root': os.path.abspath(os.path.dirname(__file__))}),
 )

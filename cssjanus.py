@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 #
 # Copyright 2008 Google Inc. All Rights Reserved.
 
@@ -268,7 +268,7 @@ BORDER_RADIUS_TOKENIZER_RE = re.compile(r'((?:%s)?border-radius%s:[^;}]+;?)' % (
 class MatchLike:
   def __init__(self, match):
     self.match = match
-  
+
   def group(self, group_number):
     return self.match
 
@@ -519,7 +519,7 @@ def ReorderBorderRadiusPart(part):
 
   # Remove any piece which may be 'None'
   part = [piece for piece in part if piece is not None]
-  
+
   if len(part) == 4:
     return '%s %s %s %s' % (part[1], part[0], part[3], part[2])
   elif len(part) == 3:
@@ -532,7 +532,7 @@ def ReorderBorderRadiusPart(part):
     return ''
   else:
     raise Error("This can't happen!")
-    
+
 
 def ReorderBorderRadius(m):
   """Receives a match object for a border-radius element and reorders it
@@ -549,7 +549,7 @@ def ReorderBorderRadius(m):
                                          m.group(2),
                                          first_group,
                                          second_group)
-                      
+
 
 def CalculateNewBackgroundPosition(m):
   """Fixes horizontal background-position percentages.
@@ -609,7 +609,7 @@ class BackgroundPositionError(Exception):
   def __init__(self, bad_length, whole_value):
     self.bad_length = bad_length
     self.whole_value = whole_value
-  
+
   def __str__(self):
     return BACKGROUND_POSITION_ERROR_MESSAGE % (repr(self.bad_length), self.whole_value)
 
@@ -629,7 +629,7 @@ def CalculateNewBackgroundLengthPosition(m):
     m: A match object.
 
   Returns:
-    A string with the horizontal background position set to 100%, if zero. 
+    A string with the horizontal background position set to 100%, if zero.
     Otherwise, an exception will be raised.
     BG_HORIZONTAL_LENGTH_RE.sub(CalculateNewBackgroundLengthPosition,
                                 'background-position: 0px 10px')
@@ -739,7 +739,7 @@ def ChangeLeftToRightToLeft(lines,
   line = border_radius_tokenizer.Tokenize(line)
   line = FixFourPartNotation(line)
   line = border_radius_tokenizer.DeTokenize(line)
-  
+
   line = FixBackgroundPosition(line)
 
   line = gradient_tokenizer.DeTokenize(line)
