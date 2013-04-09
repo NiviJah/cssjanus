@@ -1,6 +1,6 @@
 # CSSJanus
 
-_Flips CSS from LTR to an RTL orienation and vice-versa_
+Flips CSS from LTR to an RTL orientation and vice-versa
 
 ## Introduction
 
